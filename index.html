@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nada Soliman — Backend Developer (.NET / ASP.NET)</title>
+<meta name="description" content="Nada Soliman is a backend developer working with C#, ASP.NET Core and SQL Server, with a focus on APIs and database design.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef0f2;--ink:#161a1f;--mute:#5d666f;--line:#c9ced3;--acc:#2432e0;--acc-ink:#fff;--pad:clamp(20px,5vw,72px);--sans:'Lexend',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121519;--ink:#e9ecef;--mute:#8f99a3;--line:#2b3138;--acc:#7f8cff;--acc-ink:#0d0f14}}
+:root[data-theme="dark"]{--bg:#121519;--ink:#e9ecef;--mute:#8f99a3;--line:#2b3138;--acc:#7f8cff;--acc-ink:#0d0f14}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--ink);color:var(--bg);padding:8px 12px;z-index:99}
+.mono{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.wrap{padding:0 var(--pad);max-width:1360px;margin:0 auto}
+section{padding:clamp(64px,10vw,130px) 0 0}
+.sh{display:grid;grid-template-columns:200px 1fr;gap:24px;border-top:1px solid var(--ink);padding-top:16px;margin-bottom:clamp(28px,5vw,56px)}
+.sh h2{margin:0;font-size:clamp(28px,4vw,48px);line-height:1.15;letter-spacing:-.01em;font-weight:600;max-width:18ch}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 94%,transparent);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:700}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14px}
+nav ul a{color:var(--mute);padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+nav ul a:hover,nav ul a.on{color:var(--ink);border-color:var(--acc)}
+.mb{display:none;background:none;border:1px solid var(--ink);color:var(--ink);font:500 14px var(--sans);padding:7px 12px;cursor:pointer}
+.hero{padding-top:clamp(36px,6vw,80px)}
+.hg{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:clamp(32px,6vw,96px);align-items:start}
+.side{display:flex;flex-direction:column;align-items:center;gap:28px}
+.side .schema{width:100%}
+.photo{position:relative;width:clamp(180px,22vw,280px);aspect-ratio:1/1;border-radius:50%;border:2px solid var(--acc);overflow:hidden;display:grid;place-items:center;text-align:center}
+.photo img{position:absolute;inset:6px;width:calc(100% - 12px);height:calc(100% - 12px);object-fit:cover;object-position:center 30%;border-radius:50%}
+.hero h1{margin:0;font-size:clamp(44px,8.5vw,112px);line-height:1.03;letter-spacing:-.02em;font-weight:700}
+.hero h1 span{display:block}
+.role{margin:22px 0 0;font-size:clamp(18px,2vw,24px);font-weight:500}
+.lede{max-width:52ch;color:var(--mute);margin:14px 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 22px;font-weight:500;border:1px solid var(--ink);transition:background .2s,color .2s,border-color .2s}
+.btn.p{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.btn:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.schema{border:1px solid var(--ink);font-size:13px}
+.schema .t{display:flex;justify-content:space-between;padding:10px 14px;background:var(--ink);color:var(--bg)}
+.schema .r{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.schema .r:last-child{border:0}.schema dt{color:var(--mute)}.schema dd{margin:0;overflow-wrap:anywhere}.schema dl{margin:0}
+.dot{display:inline-block;width:7px;height:7px;background:var(--acc);border-radius:50%;margin-right:6px}
+.clinks{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(32px,5vw,60px);padding-top:20px;border-top:1px solid var(--line)}
+.cbtn{display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border:1px solid var(--ink);font-weight:500;font-size:14px;transition:background .2s,color .2s,border-color .2s}
+.cbtn svg{width:18px;height:18px;fill:currentColor}
+.cbtn:hover{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.two{display:grid;grid-template-columns:200px 1fr;gap:24px}
+.about p{font-size:clamp(18px,1.9vw,23px);line-height:1.6;max-width:34em;margin:0 0 1em}
+.about p+p{font-size:16px;color:var(--mute)}
+.sk{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.sk>div{padding:24px 24px 32px 0;border-right:1px solid var(--line);margin-right:24px}
+.sk>div:last-child{border:0;margin:0}
+.sk h3{margin:0 0 4px;font-size:21px;font-weight:600}
+.sk ul{list-style:none;margin:16px 0 0;padding:0}
+.sk li{padding:9px 0;border-bottom:1px solid var(--line)}
+.tl{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.tl li{display:grid;grid-template-columns:200px 1fr auto;gap:24px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.tl h3{margin:0;font-size:clamp(18px,2.2vw,26px);font-weight:500}
+.tl p{margin:4px 0 0;color:var(--mute)}
+.note{max-width:56ch;font-size:18px;margin:0 0 28px}
+.proj{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;padding:clamp(28px,5vw,56px) 0;border-top:1px solid var(--ink)}
+.pm{grid-column:1/6}.pi{grid-column:6/13}
+.pn{color:var(--acc);font-size:13px}
+.proj h3{font-size:clamp(28px,3.6vw,46px);line-height:1.1;letter-spacing:-.01em;margin:10px 0 16px;font-weight:600}
+.proj dl{margin:22px 0 0;border-top:1px solid var(--line)}
+.proj dl div{display:grid;grid-template-columns:100px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.proj dt{color:var(--mute);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.proj dd{margin:0}
+.links{margin-top:22px;display:flex;gap:20px}.links a{border-bottom:1px solid var(--ink);padding-bottom:2px}.links a:hover{color:var(--acc);border-color:var(--acc)}
+.shot{aspect-ratio:16/10;border:1px solid var(--ink);overflow:hidden;position:relative;background:#000}
+.shot video,.shot iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.shot .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;background:var(--bg)}
+.sl,.track{position:absolute;inset:0}
+.track{display:flex;transition:transform .4s ease}
+.slide{position:relative;flex:0 0 100%;height:100%}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:40px;height:40px;border:0;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.nav.prev{left:10px}.nav.next{right:10px}
+.nav:hover{background:var(--acc);color:var(--acc-ink)}
+.dots{position:absolute;top:10px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:2}
+.dots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer}
+.dots button.on{background:var(--acc)}
+.svc li{grid-template-columns:200px minmax(0,1fr) minmax(0,1fr)}
+.svc p{margin:0}
+.ct li{grid-template-columns:60px minmax(0,1.6fr) minmax(0,1fr) 110px 150px}
+.ct h3{font-size:19px}.ct a{border-bottom:1px solid var(--line);margin-right:10px}.ct a:hover{border-color:var(--acc);color:var(--acc)}
+.cta h2{margin:0;font-size:clamp(32px,6.5vw,84px);line-height:1.1;letter-spacing:-.02em;font-weight:700}
+.cta h2 span{color:var(--acc)}
+.cl{margin-top:clamp(36px,6vw,64px);display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink)}
+.cl a{padding:20px 16px 24px 0;display:block}
+.cl svg{width:24px;height:24px;fill:var(--acc);display:block;margin-bottom:10px}
+.cl a b{display:block;font-size:16px;font-weight:500;overflow-wrap:anywhere;margin-top:4px;border-bottom:1px solid transparent;width:fit-content;transition:color .2s,border-color .2s}
+.cl a:hover b{color:var(--acc);border-color:var(--acc)}
+.thanks{text-align:center;padding-bottom:20px}
+.thanks h2{margin:0 0 16px;font-size:clamp(44px,10vw,136px);line-height:1.05;letter-spacing:-.02em;font-weight:700;color:var(--acc)}
+.thanks p{margin:0 auto;max-width:44ch;color:var(--mute);font-size:18px}
+footer{margin-top:clamp(56px,8vw,110px);border-top:1px solid var(--line);padding:24px 0 40px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:14px}
+footer .fl{display:flex;gap:20px}footer a:hover{color:var(--acc)}
+dialog{border:1px solid var(--ink);background:var(--bg);color:var(--ink);padding:12px;max-width:min(92vw,960px)}dialog::backdrop{background:rgba(10,12,16,.6)}dialog img{display:block;max-width:100%;max-height:78vh;margin:auto}
+.js .rv{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
+@media(max-width:980px){
+.hg{grid-template-columns:1fr}.side{order:-1;align-items:flex-start}.sh,.two{grid-template-columns:1fr;gap:12px}
+.sk{grid-template-columns:1fr}.sk>div{border:0;margin:0;padding:24px 0;border-bottom:1px solid var(--line)}
+.proj{display:flex;flex-direction:column;gap:28px}.proj .pi{order:-1}
+.cl{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){
+.mb{display:block}
+nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px var(--pad) 16px;border-bottom:1px solid var(--ink)}
+nav ul.open{display:flex}nav ul a{display:block;padding:14px 0;font-size:17px;border-bottom:1px solid var(--line)}
+.tl li,.svc li,.ct li{grid-template-columns:1fr;gap:6px;padding:20px 0}
+.btn{flex:1;text-align:center}
+.cl{grid-template-columns:1fr}.cl a{border-bottom:1px solid var(--line);padding:16px 0}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap"><nav aria-label="Primary">
+<a class="logo" href="#home">Nada Soliman</a>
+<button class="mb" aria-expanded="false" aria-controls="menu">Menu</button>
+<ul id="menu">
+<li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#services">Services</a></li><li><a href="#certifications">Certifications</a></li><li><a href="#contact">Contact</a></li>
+</ul></nav></div></header>
+
+<main id="main" class="wrap">
+<section id="home" class="hero">
+<div class="hg">
+<div>
+<h1><span>Nada</span><span>Soliman</span></h1>
+<p class="role">Backend Developer</p>
+<p class="lede">I build backend systems where APIs, architecture and data work together. I work in C# and ASP.NET Core, and I like the part of the job that starts with the schema.</p>
+<div class="btns"><a class="btn p" href="#projects">View Projects</a><a class="btn" href="#contact">Let's Talk</a></div>
+</div>
+<div class="side">
+<div class="photo"><img id="photo" alt="Nada Soliman" hidden><span class="mono" id="photoPh">Your photo</span></div>
+<div class="schema" role="img" aria-label="Profile summary shown as a database record">
+<div class="t"><span>developer.profile</span><span>1 row</span></div>
+<dl>
+<div class="r"><dt>name</dt><dd>Nada Soliman</dd></div>
+<div class="r"><dt>role</dt><dd>Backend Developer</dd></div>
+<div class="r"><dt>stack</dt><dd>C#, ASP.NET Core, EF Core</dd></div>
+<div class="r"><dt>database</dt><dd>SQL Server</dd></div>
+<div class="r"><dt>focus</dt><dd>APIs, data modeling</dd></div>
+<div class="r"><dt>status</dt><dd><span class="dot"></span>Open to opportunities</dd></div>
+</dl></div>
+</div>
+</div>
+<div class="clinks" id="heroLinks"></div>
+</section>
+
+<section id="about" class="rv"><div class="sh"><span class="mono">About</span><h2>Data first, then the code around it.</h2></div>
+<div class="two about"><span></span><div>
+<p>I'm a backend developer working mainly with .NET and ASP.NET Core. I build APIs, and I care about how they're structured so the next person can read and change them.</p>
+<p>Databases are the part I enjoy most. Getting a data model right, with clear tables, sensible relationships and constraints that match the real rules, makes everything above it simpler. I'm building my experience through training, academic work and projects, and I'm looking for a team where I can keep doing this.</p>
+</div></div></section>
+
+<section id="skills" class="rv"><div class="sh"><span class="mono">Skills</span><h2>The tools I work with.</h2></div>
+<div class="sk" id="skillGrid"></div></section>
+
+<section id="journey" class="rv"><div class="sh"><span class="mono">Education and journey</span><h2>Where I've been learning.</h2></div>
+<p class="note">No formal employment yet. My experience so far comes from the education, training and projects on this page.</p>
+<ol class="tl" id="edu"></ol></section>
+
+<section id="projects"><div class="sh rv"><span class="mono">Selected work</span><h2>Project.</h2></div>
+<div id="projList"></div></section>
+
+<section id="services" class="rv"><div class="sh"><span class="mono">Services</span><h2>What I can build.</h2></div>
+<ol class="tl svc" id="svc"></ol></section>
+
+<section id="certifications" class="rv"><div class="sh"><span class="mono">Certifications</span><h2>Certificates.</h2></div>
+<ol class="tl ct" id="certs"></ol></section>
+
+<section id="contact" class="cta rv"><div class="sh"><span class="mono">Contact</span><span></span></div>
+<h2>Have a backend problem worth solving? <span>Let's talk.</span></h2>
+<div class="cl" id="contactLinks"></div></section>
+
+<section id="thanks" class="thanks rv"><h2>Thank you.</h2><p>Thanks for taking the time to look through my work. I'd love to hear from you.</p></section>
+</main>
+
+<dialog id="dlg" aria-label="Certificate preview"><form method="dialog"><button class="mb" style="display:block;margin:0 0 10px auto">Close</button></form><img id="dimg" alt=""></dialog>
+
+<div class="wrap"><footer>
+<div><b>Nada Soliman</b><br><span class="mono">Backend Developer</span></div>
+<div class="fl" id="footLinks"></div>
+<span class="mono">© 2026 Nada Soliman</span>
+</footer></div>
+
+<script>
+/* ===== EDIT HERE ===== */
+const PHOTO = "nada.jpg"; // put your photo next to index.html, or leave "" to show a placeholder
+const LINKEDIN = "https://www.linkedin.com/in/nada-soliman-1aa07039b/";
+
+const skills = [
+ {t:"Backend", d:"Application layer", i:["C#",".NET","ASP.NET Core","Web APIs","Entity Framework Core"]},
+ {t:"Databases", d:"Where I spend most time", i:["SQL","SQL Server","Database Design","Data Modeling"]},
+ {t:"Development", d:"Practice", i:["REST APIs","Authentication & Authorization","Git / GitHub","Object-Oriented Programming","Software Architecture"]}
+];
+const education = [
+ {n:"Faculty of Computers and Information, Shebin El Kom", k:"University", d:"[Degree / major]", y:"[Years]"},
+ {n:"NTI", k:"Training", d:"[Program / track]", y:"[Dates]"},
+ {n:"Digital Egypt Pioneers Initiative (DEPI)", k:"Training", d:"[Program / track]", y:"[Dates]"}
+];
+/* video: "demo.mp4" OR a YouTube embed link. images: files in the images/ folder. Slider = video first, then images. */
+const projects = [
+ {name:"Egypt Travel Explorer", desc:"An interactive web platform for exploring historical and tourist destinations across Egypt, enabling users to discover places, read reviews, and easily book guided tours.", problem:"Travelers struggle to find reliable, centralized information on local tourist spots and activities, along with a seamless, direct booking experience.", stack:"HTML5, CSS3, JavaScript, Node.js, Express.js, MongoDB", role:"Designed and implemented RESTful APIs, managed database schemas, integrated user", video:"demo.mp4", images:["images/p1.jpg","images/p2.jpg","images/p3.jpg"], poster:"", gh:"", demo:""}
+];
+const services = [
+ ["Backend API development","Design and build structured REST APIs for web applications."],
+ ["Database design","Relational structures, relationships and data models built to stay maintainable."],
+ ["ASP.NET Core development","Backend applications and services in C# and ASP.NET Core."],
+ ["Authentication and authorization","Sign-in, roles and permissions."],
+ ["Backend integration","Connecting applications through APIs and external services."]
+];
+/* img: image in the certs/ folder (opens as preview). link: Google Drive / verify link (optional). */
+const certs = [
+ {name:"AI for You (assessment passed, 100%)", org:"Oracle University", date:"2026", note:"", img:"certs/ai-for-you.jpg", link:""},
+ {name:"Transact SQL queries using SQL Server", org:"ITI Platform (Mahara-Tech)", date:"26 Aug 2026", note:"8 hours 2 minutes. Verification code: lBCMRli4gg", img:"certs/tsql.jpg", link:""},
+ {name:"Device Configuration and Management", org:"Certiport, IT Specialist (Pearson VUE)", date:"14 Sep 2025", note:"Verification code: Cszs-DwzJ", img:"certs/device-config.jpg", link:""},
+ {name:"CCNA: Introduction to Networks", org:"Cisco Networking Academy, via Egyptian E-Learning University", date:"11 May 2025", note:"", img:"certs/ccna.jpg", link:""},
+ {name:"Python Programming Course", org:"Sector Coder", date:"[Date]", note:"Certificate of appreciation", img:"certs/python.jpg", link:""}
+];
+const contacts = [
+ {k:"mail",t:"Email",v:"nsoliman059@gmail.com",h:"mailto:nsoliman059@gmail.com"},
+ {k:"gh",t:"GitHub",v:"nada-fullstack",h:"https://github.com/nada-fullstack"},
+ {k:"in",t:"LinkedIn",v:"nada-soliman",h:LINKEDIN},
+ {k:"tel",t:"Phone",v:"01060537912",h:"tel:+201060537912"}
+];
+
+/* ===== Rendering ===== */
+const $=s=>document.querySelector(s), esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad=n=>String(n+1).padStart(2,"0");
+const lnk=(u,t)=>u?`<a href="${esc(u)}" target="_blank" rel="noopener">${t}</a>`:"";
+const IC={
+mail:'<path d="M2 5h20v2l-10 6L2 7V5zm0 4.5l10 6 10-6V19H2V9.5z"/>',
+gh:'<path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/>',
+in:'<path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zm6.5 0h3.8v1.6h.05c.53-1 1.83-2 3.77-2 4 0 4.78 2.63 4.78 6.05V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.92 1.3-1.92 2.63V21h-4V9.75z"/>',
+tel:'<path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11 11 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.6 3.6a1 1 0 0 1-.25 1z"/>'};
+const svg=k=>`<svg viewBox="0 0 24 24" aria-hidden="true">${IC[k]}</svg>`;
+const ext=h=>h.startsWith("http")?' target="_blank" rel="noopener"':"";
+
+if(PHOTO){const im=$("#photo");im.onload=()=>{im.hidden=false;$("#photoPh").hidden=true};im.src=PHOTO}
+$("#heroLinks").innerHTML=contacts.map(c=>`<a class="cbtn" href="${c.h}"${ext(c.h)}>${svg(c.k)}${c.t}</a>`).join("");
+$("#contactLinks").innerHTML=contacts.map(c=>`<a href="${c.h}"${ext(c.h)}>${svg(c.k)}<span class="mono">${c.t}</span><b>${esc(c.v)}</b></a>`).join("");
+$("#footLinks").innerHTML=contacts.slice(0,3).map(c=>`<a href="${c.h}"${ext(c.h)}>${c.t}</a>`).join("");
+
+$("#skillGrid").innerHTML=skills.map(s=>`<div class="rv"><h3>${s.t}</h3><span class="mono">${s.d}</span><ul>${s.i.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
+$("#edu").innerHTML=education.map(e=>`<li class="rv"><span class="mono">${e.k}</span><div><h3>${esc(e.n)}</h3><p>${esc(e.d)}</p></div><span class="mono">${esc(e.y)}</span></li>`).join("");
+
+const slides=p=>{
+ const s=[];
+ if(p.video)s.push(/\.(mp4|webm)$/i.test(p.video)
+  ?`<video src="${esc(p.video)}" controls playsinline preload="metadata"${p.poster?` poster="${esc(p.poster)}"`:""}></video>`
+  :`<iframe src="${esc(p.video)}" title="${esc(p.name)} demo" allowfullscreen loading="lazy"></iframe>`);
+ (p.images||[]).forEach((im,k)=>s.push(`<img src="${esc(im)}" alt="${esc(p.name)} screenshot ${k+1}" loading="lazy">`));
+ return s};
+const media=p=>{
+ const s=slides(p);
+ if(!s.length)return `<div class="ph mono">[Project video]</div>`;
+ return `<div class="sl"><div class="track">${s.map(x=>`<div class="slide">${x}</div>`).join("")}</div>`
+  +(s.length>1?`<button class="nav prev" aria-label="Previous">‹</button><button class="nav next" aria-label="Next">›</button><div class="dots">${s.map((_,i)=>`<button aria-label="Slide ${i+1}"></button>`).join("")}</div>`:"")+`</div>`};
+$("#projList").innerHTML=projects.map((p,i)=>`<article class="proj rv"><div class="pm"><span class="pn">project.${pad(i)}</span><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
+<dl><div><dt>problem</dt><dd>${esc(p.problem)}</dd></div><div><dt>stack</dt><dd>${esc(p.stack)}</dd></div><div><dt>role</dt><dd>${esc(p.role)}</dd></div></dl>
+<div class="links">${lnk(p.gh,"GitHub")}${lnk(p.demo,"Live demo")}</div></div>
+<div class="pi"><div class="shot">${media(p)}</div></div></article>`).join("");
+
+document.querySelectorAll(".sl").forEach(sl=>{
+ const tr=sl.querySelector(".track"),n=tr.children.length,ds=[...sl.querySelectorAll(".dots button")];
+ if(n<2)return;
+ let i=0,x=null;
+ const go=k=>{i=(k+n)%n;tr.style.transform=`translateX(-${i*100}%)`;ds.forEach((d,j)=>d.classList.toggle("on",j===i));sl.querySelectorAll("video").forEach(v=>v.pause())};
+ sl.querySelector(".prev").onclick=()=>go(i-1);
+ sl.querySelector(".next").onclick=()=>go(i+1);
+ ds.forEach((d,j)=>d.onclick=()=>go(j));
+ sl.addEventListener("touchstart",e=>x=e.touches[0].clientX,{passive:true});
+ sl.addEventListener("touchend",e=>{if(x===null)return;const d=e.changedTouches[0].clientX-x;if(Math.abs(d)>50)go(d<0?i+1:i-1);x=null});
+ go(0);
+});
+
+$("#svc").innerHTML=services.map((s,i)=>`<li class="rv"><span class="mono">${pad(i)}</span><h3>${s[0]}</h3><p>${s[1]}</p></li>`).join("");
+$("#certs").innerHTML=certs.map((c,i)=>`<li class="rv"><span class="mono">${pad(i)}</span><h3>${esc(c.name)}</h3><span>${esc(c.org)}${c.note?`<br><span class="mono">${esc(c.note)}</span>`:""}</span><span class="mono">${esc(c.date)}</span><span>${c.img?`<a href="${esc(c.img)}" class="pv" data-i="${i}" role="button">Preview</a>`:""}${lnk(c.link,"Verify")}</span></li>`).join("");
+
+const dlg=$("#dlg"),dimg=$("#dimg");
+$("#certs").addEventListener("click",e=>{const a=e.target.closest(".pv");if(!a)return;e.preventDefault();const c=certs[a.dataset.i];dimg.src=c.img;dimg.alt="Certificate: "+c.name;dlg.showModal()});
+dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
+
+const mb=$(".mb"),menu=$("#menu");
+mb.onclick=()=>{const o=menu.classList.toggle("open");mb.setAttribute("aria-expanded",o)};
+menu.addEventListener("click",e=>{if(e.target.tagName==="A"){menu.classList.remove("open");mb.setAttribute("aria-expanded","false")}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")menu.classList.remove("open")});
+document.documentElement.classList.add("js");
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+const links=[...document.querySelectorAll("#menu a")];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id==="journey"?"about":e.target.id;links.forEach(l=>l.classList.toggle("on",l.getAttribute("href")==="#"+id))}}),{rootMargin:"-40% 0px -55% 0px"});
+document.querySelectorAll("main section[id]").forEach(s=>so.observe(s));
+</script>
+</body>
+</html>
